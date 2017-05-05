@@ -16,6 +16,10 @@
 		EA349F4A1EBC7F6700FCCEAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA349F481EBC7F6700FCCEAB /* LaunchScreen.storyboard */; };
 		EA349F551EBC7F6700FCCEAB /* LocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA349F541EBC7F6700FCCEAB /* LocksTests.swift */; };
 		EA349F601EBC7F6700FCCEAB /* LocksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA349F5F1EBC7F6700FCCEAB /* LocksUITests.swift */; };
+		EA349F6F1EBC82DA00FCCEAB /* Person.png in Resources */ = {isa = PBXBuildFile; fileRef = EA349F6D1EBC82DA00FCCEAB /* Person.png */; };
+		EA349F701EBC82DA00FCCEAB /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = EA349F6E1EBC82DA00FCCEAB /* Circle.png */; };
+		EA349F721EBC9D1300FCCEAB /* Dot.png in Resources */ = {isa = PBXBuildFile; fileRef = EA349F711EBC9D1300FCCEAB /* Dot.png */; };
+		EA349F741EBC9EB500FCCEAB /* CGFloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA349F731EBC9EB500FCCEAB /* CGFloatExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,10 @@
 		EA349F5B1EBC7F6700FCCEAB /* LocksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA349F5F1EBC7F6700FCCEAB /* LocksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocksUITests.swift; sourceTree = "<group>"; };
 		EA349F611EBC7F6700FCCEAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA349F6D1EBC82DA00FCCEAB /* Person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Person.png; sourceTree = "<group>"; };
+		EA349F6E1EBC82DA00FCCEAB /* Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle.png; sourceTree = "<group>"; };
+		EA349F711EBC9D1300FCCEAB /* Dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dot.png; sourceTree = "<group>"; };
+		EA349F731EBC9EB500FCCEAB /* CGFloatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloatExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +109,13 @@
 		EA349F3A1EBC7F6700FCCEAB /* Locks */ = {
 			isa = PBXGroup;
 			children = (
+				EA349F6D1EBC82DA00FCCEAB /* Person.png */,
+				EA349F711EBC9D1300FCCEAB /* Dot.png */,
+				EA349F6E1EBC82DA00FCCEAB /* Circle.png */,
 				EA349F3B1EBC7F6700FCCEAB /* AppDelegate.swift */,
 				EA349F3D1EBC7F6700FCCEAB /* GameScene.sks */,
 				EA349F3F1EBC7F6700FCCEAB /* GameScene.swift */,
+				EA349F731EBC9EB500FCCEAB /* CGFloatExtension.swift */,
 				EA349F411EBC7F6700FCCEAB /* GameViewController.swift */,
 				EA349F431EBC7F6700FCCEAB /* Main.storyboard */,
 				EA349F461EBC7F6700FCCEAB /* Assets.xcassets */,
@@ -236,8 +248,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA349F3E1EBC7F6700FCCEAB /* GameScene.sks in Resources */,
+				EA349F701EBC82DA00FCCEAB /* Circle.png in Resources */,
 				EA349F4A1EBC7F6700FCCEAB /* LaunchScreen.storyboard in Resources */,
+				EA349F721EBC9D1300FCCEAB /* Dot.png in Resources */,
 				EA349F471EBC7F6700FCCEAB /* Assets.xcassets in Resources */,
+				EA349F6F1EBC82DA00FCCEAB /* Person.png in Resources */,
 				EA349F451EBC7F6700FCCEAB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,6 +280,7 @@
 			files = (
 				EA349F401EBC7F6700FCCEAB /* GameScene.swift in Sources */,
 				EA349F421EBC7F6700FCCEAB /* GameViewController.swift in Sources */,
+				EA349F741EBC9EB500FCCEAB /* CGFloatExtension.swift in Sources */,
 				EA349F3C1EBC7F6700FCCEAB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
