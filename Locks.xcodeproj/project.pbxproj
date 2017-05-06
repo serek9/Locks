@@ -20,6 +20,9 @@
 		EA349F701EBC82DA00FCCEAB /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = EA349F6E1EBC82DA00FCCEAB /* Circle.png */; };
 		EA349F721EBC9D1300FCCEAB /* Dot.png in Resources */ = {isa = PBXBuildFile; fileRef = EA349F711EBC9D1300FCCEAB /* Dot.png */; };
 		EA349F741EBC9EB500FCCEAB /* CGFloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA349F731EBC9EB500FCCEAB /* CGFloatExtension.swift */; };
+		EAECD14C1EBE095B00A1B774 /* MusicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAECD14B1EBE095B00A1B774 /* MusicHelper.swift */; };
+		EAECD14E1EBE123500A1B774 /* talkiewalkie.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EAECD14D1EBE123500A1B774 /* talkiewalkie.mp3 */; };
+		EAECD1501EBE147F00A1B774 /* spacev.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EAECD14F1EBE147F00A1B774 /* spacev.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		EA349F6E1EBC82DA00FCCEAB /* Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle.png; sourceTree = "<group>"; };
 		EA349F711EBC9D1300FCCEAB /* Dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dot.png; sourceTree = "<group>"; };
 		EA349F731EBC9EB500FCCEAB /* CGFloatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloatExtension.swift; sourceTree = "<group>"; };
+		EAECD14B1EBE095B00A1B774 /* MusicHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicHelper.swift; sourceTree = "<group>"; };
+		EAECD14D1EBE123500A1B774 /* talkiewalkie.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = talkiewalkie.mp3; sourceTree = "<group>"; };
+		EAECD14F1EBE147F00A1B774 /* spacev.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spacev.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,9 +118,12 @@
 				EA349F6D1EBC82DA00FCCEAB /* Person.png */,
 				EA349F711EBC9D1300FCCEAB /* Dot.png */,
 				EA349F6E1EBC82DA00FCCEAB /* Circle.png */,
+				EAECD14F1EBE147F00A1B774 /* spacev.jpg */,
+				EAECD14D1EBE123500A1B774 /* talkiewalkie.mp3 */,
 				EA349F3B1EBC7F6700FCCEAB /* AppDelegate.swift */,
 				EA349F3D1EBC7F6700FCCEAB /* GameScene.sks */,
 				EA349F3F1EBC7F6700FCCEAB /* GameScene.swift */,
+				EAECD14B1EBE095B00A1B774 /* MusicHelper.swift */,
 				EA349F731EBC9EB500FCCEAB /* CGFloatExtension.swift */,
 				EA349F411EBC7F6700FCCEAB /* GameViewController.swift */,
 				EA349F431EBC7F6700FCCEAB /* Main.storyboard */,
@@ -247,8 +256,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAECD1501EBE147F00A1B774 /* spacev.jpg in Resources */,
 				EA349F3E1EBC7F6700FCCEAB /* GameScene.sks in Resources */,
 				EA349F701EBC82DA00FCCEAB /* Circle.png in Resources */,
+				EAECD14E1EBE123500A1B774 /* talkiewalkie.mp3 in Resources */,
 				EA349F4A1EBC7F6700FCCEAB /* LaunchScreen.storyboard in Resources */,
 				EA349F721EBC9D1300FCCEAB /* Dot.png in Resources */,
 				EA349F471EBC7F6700FCCEAB /* Assets.xcassets in Resources */,
@@ -278,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAECD14C1EBE095B00A1B774 /* MusicHelper.swift in Sources */,
 				EA349F401EBC7F6700FCCEAB /* GameScene.swift in Sources */,
 				EA349F421EBC7F6700FCCEAB /* GameViewController.swift in Sources */,
 				EA349F741EBC9EB500FCCEAB /* CGFloatExtension.swift in Sources */,
@@ -510,6 +522,7 @@
 				EA349F661EBC7F6700FCCEAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EA349F671EBC7F6700FCCEAB /* Build configuration list for PBXNativeTarget "LocksTests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +531,7 @@
 				EA349F691EBC7F6700FCCEAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EA349F6A1EBC7F6700FCCEAB /* Build configuration list for PBXNativeTarget "LocksUITests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +540,7 @@
 				EA349F6C1EBC7F6700FCCEAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

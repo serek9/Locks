@@ -7,32 +7,70 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 class GameScene: SKScene {
     
-    var Circle = SKSpriteNode()
-    var Person = SKSpriteNode()
-    var Dot = SKSpriteNode()
+    var Circle = SKSpriteNode(imageNamed: "Circle")
+    var Person = SKSpriteNode(imageNamed: "Person")
+    var Dot = SKSpriteNode(imageNamed: "Dot")
     
     var Path = UIBezierPath()
     
     var gameStarted = Bool()
     
     var movingClockwise = Bool()
+    var intersected = false
+    
+    var LevelLabel = UILabel()
+    
+    var currentLevel = Int()
+    var currentScore = Int()
+    var highLevel = Int()
+    
     override func didMoveToView(view: SKView) {
         
-        Circle = SKSpriteNode(imageNamed: "Circle")
+        loadView()
+        let Defaults = NSUserDefaults.standardUserDefaults()
+        if Defaults.integerForKey("HighLevel") != 0 {
+            highLevel = Defaults.integerForKey("HighLevel") as Int!
+            currentLevel = highLevel
+            currentScore = currentLevel
+            LevelLabel.text = "\(currentScore)"
+        }else{
+            Defaults.setInteger(1, forKey: "HighLevel")
+        }
+    }
+    
+    func loadView(){
+        movingClockwise = true
+        
+        backgroundColor = SKColor.blackColor()
+        
+        //Creamos el circulo
         Circle.size = CGSize(width: 300, height: 300)
         Circle.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
         self.addChild(Circle)
         
+        //Creamos la persona
         Person = SKSpriteNode(imageNamed: "Person")
         Person.size = CGSize(width: 40, height: 7)
         Person.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + 120)
         Person.zRotation = 3.14 / 2
+        Person.zPosition = 2.0
         self.addChild(Person)
         
+        //Añadimos el punto
         addDot()
+        
+        LevelLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
+        LevelLabel.center = (self.view?.center)!
+        LevelLabel.text = "How you feel?"
+        LevelLabel.sizeToFit()
+        LevelLabel.textColor = SKColor.darkGrayColor()
+        LevelLabel.textAlignment = NSTextAlignment.Center
+        self.view?.addSubview(LevelLabel)
+        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -50,25 +88,27 @@ class GameScene: SKScene {
                 moveClockWise()
                 movingClockwise = true
             }
+            DotTouched()
         }
     }
     
     func addDot(){
-        Dot = SKSpriteNode(imageNamed: "Dot")
+        //Creamos el punto
         Dot.size = CGSize(width: 30, height: 30)
-        //TODO -- https://www.youtube.com/watch?v=h4x1Wg8ht0k (9:44)
+        Dot.zPosition = 1.0
+        
         let dx = Person.position.x - self.frame.width / 2
         let dy = Person.position.y - self.frame.height / 2
         
         let rad = atan2(dy, dx)
         
         if movingClockwise == true{
-            let tempAngle = CGFloat.random(min: rad + 1.0, max: rad + 2.5)
+            let tempAngle = CGFloat.random(min: rad - 1.0, max: rad - 2.5)
             let Path2 = UIBezierPath(arcCenter: CGPoint(x: self.frame.width / 2, y: self.frame.height / 2), radius: 120, startAngle: tempAngle, endAngle: tempAngle + CGFloat(M_PI * 4), clockwise: true)
             Dot.position = Path2.currentPoint
         }
         else if movingClockwise == false{
-            let tempAngle = CGFloat.random(min: rad - 1.0, max: rad - 2.5)
+            let tempAngle = CGFloat.random(min: rad + 1.0, max: rad + 2.5)
             let Path2 = UIBezierPath(arcCenter: CGPoint(x: self.frame.width / 2, y: self.frame.height / 2), radius: 120, startAngle: tempAngle, endAngle: tempAngle + CGFloat(M_PI * 4), clockwise: true)
             Dot.position = Path2.currentPoint
         }
@@ -98,8 +138,71 @@ class GameScene: SKScene {
         let follow = SKAction.followPath(Path.CGPath, asOffset: false, orientToPath: true, speed: 200)
         Person.runAction(SKAction.repeatActionForever(follow))
     }
+    
+    func DotTouched(){
+        if intersected == true {
+            Dot.removeFromParent()
+            addDot()
+            intersected = false
+            
+            currentScore--
+            LevelLabel.text = "\(currentScore)"
+            if currentScore <= 0 {
+                nextLevel()
+            }
+        }
+        else if intersected == false {
+            die()
+        }
+    }
+    
+    func nextLevel(){
+        currentLevel++
+        currentScore = currentLevel
+        LevelLabel.text = "\(currentScore)"
+        won()
+        if currentLevel > highLevel {
+            highLevel = currentLevel
+            let Defaults = NSUserDefaults.standardUserDefaults()
+            Defaults.setInteger(highLevel, forKey: "HighLevel")
+        }
+    }
+    
+    func die(){
+        self.removeAllChildren()
+        let action1 = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.2)
+        let action2 = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 0.2)
+        self.scene?.runAction(SKAction.sequence([action1,action2]))
+        intersected = false
+        gameStarted = false
+        LevelLabel.removeFromSuperview()
+        currentScore = currentLevel
+        self.loadView()
+    }
+    
+    func won(){
+        self.removeAllChildren()
+        let action1 = SKAction.colorizeWithColor(UIColor.greenColor(), colorBlendFactor: 1.0, duration: 0.2)
+        let action2 = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 0.2)
+        self.scene?.runAction(SKAction.sequence([action1,action2]))
+        intersected = false
+        gameStarted = false
+        LevelLabel.removeFromSuperview()
+        self.loadView()
+    }
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        
+        if Person.intersectsNode(Dot) {
+            intersected = true
+        }
+        else{
+            if intersected == true {
+                if Person.intersectsNode(Dot) == false {
+                    die()
+                }
+            }
+        }
     }
 }
