@@ -14,6 +14,7 @@ class MusicHelper {
     var audioPlayer: AVAudioPlayer?
     
     func playBackgroundMusic() {
+        //Reproduce musica con AVFoundation
         let aSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("talkiewalkie", ofType: "mp3")!)
         do {
             audioPlayer = try AVAudioPlayer(contentsOfURL:aSound)

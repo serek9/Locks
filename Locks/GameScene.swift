@@ -29,7 +29,7 @@ class GameScene: SKScene {
     var highLevel = Int()
     
     override func didMoveToView(view: SKView) {
-        
+        //Cargar la view del juego y establecer datos por defecto si estos no existen
         loadView()
         let Defaults = NSUserDefaults.standardUserDefaults()
         if Defaults.integerForKey("HighLevel") != 0 {
@@ -63,6 +63,7 @@ class GameScene: SKScene {
         //Añadimos el punto
         addDot()
         
+        //Creamos el textview del nivel
         LevelLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
         LevelLabel.center = (self.view?.center)!
         LevelLabel.text = "How you feel?"
@@ -74,6 +75,7 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        //Comprobamos el estado del juego por cada touch, para mover o parar la aguja.
         if gameStarted == false {
             moveClockWise()
             movingClockwise = true
@@ -117,6 +119,7 @@ class GameScene: SKScene {
     
     
     func moveClockWise(){
+        //Creamos el movimiento que va a tener la aguja (Person) y que va a seguir el camino (Path) por dentro del circulo (hacia una direccion)
         let dx = Person.position.x - self.frame.width / 2
         let dy = Person.position.y - self.frame.height / 2
         
@@ -129,6 +132,7 @@ class GameScene: SKScene {
     }
     
     func moveCounterClockWise(){
+        //Creamos el movimiento que va a tener la aguja (Person) y que va a seguir el camino (Path) por dentro del circulo (hacia una direccion contraria a la anterior)
         let dx = Person.position.x - self.frame.width / 2
         let dy = Person.position.y - self.frame.height / 2
         
@@ -140,6 +144,7 @@ class GameScene: SKScene {
     }
     
     func DotTouched(){
+        //Comprobar si el punto ha sido tocado por la persona en el momento de tocar la pantalla y si la persona sigue dentro del punto
         if intersected == true {
             Dot.removeFromParent()
             addDot()
@@ -157,6 +162,7 @@ class GameScene: SKScene {
     }
     
     func nextLevel(){
+        //Augmentar el nivel y cambiar el texto que marca el nivel
         currentLevel++
         currentScore = currentLevel
         LevelLabel.text = "\(currentScore)"
@@ -169,6 +175,7 @@ class GameScene: SKScene {
     }
     
     func die(){
+        //Resetear la view y mostrar destello rojo
         self.removeAllChildren()
         let action1 = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.2)
         let action2 = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 0.2)
@@ -181,6 +188,7 @@ class GameScene: SKScene {
     }
     
     func won(){
+        //Resetear la view, augmentar nivel y mostrar destello verde
         self.removeAllChildren()
         let action1 = SKAction.colorizeWithColor(UIColor.greenColor(), colorBlendFactor: 1.0, duration: 0.2)
         let action2 = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 0.2)
@@ -193,7 +201,7 @@ class GameScene: SKScene {
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-        
+        //Comprobar si la persona esta intersectando el punto en cada momento
         if Person.intersectsNode(Dot) {
             intersected = true
         }

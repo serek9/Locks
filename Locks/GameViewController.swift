@@ -13,6 +13,7 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Activa la musica para que empiece a sonar
         MusicHelper.sharedHelper.playBackgroundMusic()
         if let scene = GameScene(fileNamed:"GameScene") {
             // Configure the view.
@@ -20,7 +21,7 @@ class GameViewController: UIViewController {
             let skView = self.view as! SKView
             skView.showsFPS = false
             skView.showsNodeCount = false
-            skView.backgroundColor = UIColor(patternImage: UIImage(named: "spacev.jpg")!)
+            //skView.backgroundColor = UIColor(patternImage: UIImage(named: "spacev.jpg")!)
             
             /* Sprite Kit applies additional optimizations to improve rendering performance */
             skView.ignoresSiblingOrder = true
