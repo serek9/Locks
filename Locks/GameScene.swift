@@ -68,7 +68,7 @@ class GameScene: SKScene {
         LevelLabel.center = (self.view?.center)!
         LevelLabel.text = "How you feel?"
         LevelLabel.sizeToFit()
-        LevelLabel.textColor = SKColor.darkGrayColor()
+        LevelLabel.textColor = SKColor.whiteColor()
         LevelLabel.textAlignment = NSTextAlignment.Center
         self.view?.addSubview(LevelLabel)
         
@@ -178,7 +178,7 @@ class GameScene: SKScene {
         //Resetear la view y mostrar destello rojo
         self.removeAllChildren()
         let action1 = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.2)
-        let action2 = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 0.2)
+        let action2 = SKAction.colorizeWithColor(UIColor.blackColor(), colorBlendFactor: 1.0, duration: 0.2)
         self.scene?.runAction(SKAction.sequence([action1,action2]))
         intersected = false
         gameStarted = false
@@ -191,7 +191,7 @@ class GameScene: SKScene {
         //Resetear la view, augmentar nivel y mostrar destello verde
         self.removeAllChildren()
         let action1 = SKAction.colorizeWithColor(UIColor.greenColor(), colorBlendFactor: 1.0, duration: 0.2)
-        let action2 = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 0.2)
+        let action2 = SKAction.colorizeWithColor(UIColor.blackColor(), colorBlendFactor: 1.0, duration: 0.2)
         self.scene?.runAction(SKAction.sequence([action1,action2]))
         intersected = false
         gameStarted = false
